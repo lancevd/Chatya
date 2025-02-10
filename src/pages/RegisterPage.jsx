@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useAuthStore } from "../store/useAuthStore";
-import { MessageSquare, User, Mail, Eye, Lock } from "lucide-react";
+import { MessageSquare, User, Mail, Eye, Lock, Loader2 } from "lucide-react";
+import { Link } from "react-router";
 
 const RegisterPage = () => {
   const [showPassword, setShowPassword] = useState(false);
@@ -10,7 +11,7 @@ const RegisterPage = () => {
     password: "",
   });
 
-  const { signup, isSigninUp } = useAuthStore();
+  const { signup, isSigningUp } = useAuthStore();
   const validateForm = () => {};
   const handleSubmit = (e) => {};
   return (
@@ -30,7 +31,11 @@ const RegisterPage = () => {
             </div>
           </div>
         </div>
-        <form onSubmit={handleSubmit} className="space-y-6 w-2/3" action="POST">
+        <form
+          onSubmit={handleSubmit}
+          className="space-y-6 w-4/5 lg:w-2/3"
+          action="POST"
+        >
           <label className="form-control w-full">
             <div className="label">
               <span className="label-text">Full Name</span>
@@ -88,7 +93,29 @@ const RegisterPage = () => {
               />
             </div>
           </label>
+          <button
+            type="submit"
+            className="btn btn-primary w-full"
+            disabled={isSigningUp}
+          >
+            {isSigningUp ? (
+              <>
+                <Loader2 className="size-4 animate-spin" />
+              </>
+            ) : (
+              "Create Account"
+            )}
+          </button>
         </form>
+
+        <div className="text-center">
+          <p className="text-base-content/60">
+            Already have an account?
+            <Link to="/login" className="text-primary">
+              &nbsp;Login
+            </Link>
+          </p>
+        </div>
       </div>
     </div>
   );
