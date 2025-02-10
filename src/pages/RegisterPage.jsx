@@ -19,17 +19,23 @@ const RegisterPage = () => {
       <div className="flex flex-col justify-center items-center p-6 sm:p-12">
         <div className="w-full max-w-md space-y-8">
           <div className="text-center mb-8">
-            <div className="size-12 w-full rounded-xl bg-primary/10 flex items-center justify-center group-hover:bg-primary/20 transition-colors">
-              <MessageSquare className="size-6 text-primary" />
+            <div className="flex flex-col items-center gap-2 group">
+              <div className="size-12 rounded-xl bg-primary/10 flex items-center justify-center group-hover:bg-primary/20 transition-colors">
+                <MessageSquare className="size-6 text-primary" />
+              </div>
+              <h1 className="text-2xl font-bold mt-2">Create Account</h1>
+              <p className="text-base-content/60">
+                Get started with your free account
+              </p>
             </div>
-            <h1 className="text-2xl font-bold mt-2">Create Account</h1>
-            <p className="text-base-content/60">
-              Get started with your free account
-            </p>
           </div>
         </div>
-        <form onSubmit={handleSubmit} className="space-y-6" action="POST">
-          <label className="form-control w-full max-w-xs">
+        <form
+          onSubmit={handleSubmit}
+          className="space-y-6 w-2/3"
+          action="POST"
+        >
+          <label className="form-control w-full">
             <div className="label">
               <span className="label-text">Full Name</span>
             </div>
@@ -39,7 +45,7 @@ const RegisterPage = () => {
             </div>
           </label>
 
-          <label className="form-control w-full max-w-xs">
+          <label className="form-control w-full">
             <div className="label">
               <span className="label-text">Email</span>
             </div>
@@ -53,7 +59,7 @@ const RegisterPage = () => {
             </div>
           </label>
 
-          <label className="form-control w-full max-w-xs">
+          <label className="form-control w-full">
             <div className="label">
               <span className="label-text">Password </span>
             </div>
