@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { useAuthStore } from "../store/useAuthStore";
 import { MessageSquare, User, Mail, Eye, Lock, Loader2 } from "lucide-react";
 import { Link } from "react-router";
+import AuthimagePattern from "../components/AuthimagePattern";
 
 const RegisterPage = () => {
   const [showPassword, setShowPassword] = useState(false);
@@ -117,6 +118,9 @@ const RegisterPage = () => {
           </p>
         </div>
       </div>
+
+      {/* Right side */}
+      <AuthimagePattern title="Create Account" subtitle="Get started with your free account" />
     </div>
   );
 };
