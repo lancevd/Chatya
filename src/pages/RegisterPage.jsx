@@ -17,19 +17,23 @@ const RegisterPage = () => {
   const validateForm = () => {
     if (!formData.fullName.trim()) return toast.error("Full name is required");
     if (!formData.email.trim()) return toast.error("Email is required");
-    if (!/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/.test(formData.email)) return toast.error("Invalid email address");
+    if (
+      !/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/.test(formData.email)
+    )
+      return toast.error("Invalid email address");
     if (!formData.password.trim()) return toast.error("Password is required");
-    if (formData.password.length < 6) return toast.error("Password must be at least 6 characters long");
+    if (formData.password.length < 6)
+      return toast.error("Password must be at least 6 characters long");
 
     return true;
-  
   };
   const handleSubmit = (e) => {
     e.preventDefault();
 
     const success = validateForm();
-    if (success) 
-    signup(formData);
+    if (success === true) {
+      signup(formData);
+    }
   };
   return (
     <div className="min-h-screen grid lg:grid-cols-2">
