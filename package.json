@@ -5,8 +5,10 @@
   "dependencies": {
     "axios": "^1.7.9",
     "cra-template": "1.2.0",
+    "lucide-react": "^0.475.0",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
+    "react-hot-toast": "^2.5.1",
     "react-router": "^7.1.5",
     "react-router-dom": "^7.1.5",
     "react-scripts": "5.0.1",

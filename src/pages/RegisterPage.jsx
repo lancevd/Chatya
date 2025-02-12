@@ -13,8 +13,20 @@ const RegisterPage = () => {
   });
 
   const { signup, isSigningUp } = useAuthStore();
-  const validateForm = () => {};
-  const handleSubmit = (e) => {};
+  const validateForm = () => {
+    if (!formData.fullName || !formData.email || !formData.password) {
+      return false;
+    }
+    return true;
+  };
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    if (!validateForm()) {
+      alert("Please fill all fields");
+      return;
+    }
+    signup(formData);
+  };
   return (
     <div className="min-h-screen grid lg:grid-cols-2">
       {/* Left side */}
@@ -120,7 +132,10 @@ const RegisterPage = () => {
       </div>
 
       {/* Right side */}
-      <AuthimagePattern title="Create Account" subtitle="Get started with your free account" />
+      <AuthimagePattern
+        title="Create Account"
+        subtitle="Get started with your free account"
+      />
     </div>
   );
 };
