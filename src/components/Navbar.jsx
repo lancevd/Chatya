@@ -20,13 +20,13 @@ const Navbar = () => {
                 to="/login"
                 className="flex hover:bg-primary/20 p-2 rounded items-center gap-1"
               >
-                <LogIn className="size-4" /> Login
+                <LogIn className="size-4" /> <p className="hidden md:block">Login</p>
               </Link>
               <Link
                 to="/settings"
                 className="flex hover:bg-primary/20 p-2 rounded items-center gap-1"
               >
-                <Settings className="size-4" /> Settings
+                <Settings className="size-4" /> <p className="hidden md:block">Settings</p>
               </Link>
             </ul>
           </div>
