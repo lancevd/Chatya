@@ -5,7 +5,6 @@ import { useAuthStore } from "../store/useAuthStore";
 
 const Navbar = () => {
   const { logout, authUser } = useAuthStore();
-  console.log(authUser);
   return (
     <div className="navbar bg-base-100">
       <div className="flex-1">
@@ -17,10 +16,16 @@ const Navbar = () => {
         {authUser == null ? (
           <div className="flex-none">
             <ul className="menu menu-horizontal flex gap-2 px-1">
-              <Link to="/login" className="flex items-center gap-1">
+              <Link
+                to="/login"
+                className="flex hover:bg-primary/20 p-2 rounded items-center gap-1"
+              >
                 <LogIn className="size-4" /> Login
               </Link>
-              <Link to="/settings" className="flex items-center gap-1">
+              <Link
+                to="/settings"
+                className="flex hover:bg-primary/20 p-2 rounded items-center gap-1"
+              >
                 <Settings className="size-4" /> Settings
               </Link>
             </ul>
@@ -45,19 +50,28 @@ const Navbar = () => {
                 className="menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-52 p-2 shadow"
               >
                 <li>
-                  <Link className="flex gap-1" to="/profile">
+                  <Link
+                    className="flex hover:bg-primary/20 p-2 rounded gap-1"
+                    to="/profile"
+                  >
                     <User className="size-4" />
                     Profile
                   </Link>
                 </li>
                 <li>
-                  <Link className="flex gap-1" to="/settings">
+                  <Link
+                    className="flex hover:bg-primary/20 p-2 rounded gap-1"
+                    to="/settings"
+                  >
                     <Settings className="size-4" />
                     Settings
                   </Link>
                 </li>
                 <li>
-                  <Link className="flex gap-1" onClick={logout}>
+                  <Link
+                    className="flex hover:bg-primary/20 p-2 rounded gap-1"
+                    onClick={logout}
+                  >
                     <LogOut className="size-4" /> Logout
                   </Link>
                 </li>
