@@ -1,11 +1,10 @@
 import { LogIn, LogOut, MessageSquare, Settings, User } from "lucide-react";
 import React from "react";
-import { Link, useNavigate } from "react-router";
+import { Link } from "react-router";
 import { useAuthStore } from "../store/useAuthStore";
 
 const Navbar = () => {
   const { logout, authUser } = useAuthStore();
-  const navigate = useNavigate();
   const handleLogout = async () => {
     await logout();
     window.location.href = "/login";

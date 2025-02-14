@@ -1,8 +1,9 @@
 import React, { useState } from "react";
 import { useAuthStore } from "../store/useAuthStore";
 import AuthimagePattern from "../components/AuthimagePattern";
-import { MessageSquare, User, Mail, Lock, Eye, Loader2 } from "lucide-react";
+import { MessageSquare, Mail, Lock, Eye, Loader2 } from "lucide-react";
 import { Link } from "react-router";
+import toast from "react-hot-toast";
 
 const LoginPage = () => {
   const [showPassword, setShowPassword] = useState(false);
@@ -10,11 +11,22 @@ const LoginPage = () => {
 
   const { login, isLoggingIn } = useAuthStore();
 
-  const validateForm = () => {};
+  const validateForm = () => {
+    if (!formData.email.trim()) return toast.error("Email is required");
+    if (
+      !/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/.test(formData.email)
+    )
+      return toast.error("Invalid email address");
+    if (!formData.password.trim()) return toast.error("Password is required");
+
+    return true;
+  };
   const handleSubmit = (e) => {
     e.preventDefault();
-
-    login(formData);
+    const success = validateForm();
+    if (success === true) {
+      login(formData);
+    }
   };
 
   return (
