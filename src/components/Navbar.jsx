@@ -1,10 +1,16 @@
 import { LogIn, LogOut, MessageSquare, Settings, User } from "lucide-react";
 import React from "react";
-import { Link } from "react-router";
+import { Link, useNavigate } from "react-router";
 import { useAuthStore } from "../store/useAuthStore";
 
 const Navbar = () => {
   const { logout, authUser } = useAuthStore();
+  const navigate = useNavigate();
+  const handleLogout = async () => {
+    await logout();
+    window.location.href = "/login";
+  };
+
   return (
     <div className="navbar bg-base-100">
       <div className="flex-1">
@@ -70,7 +76,7 @@ const Navbar = () => {
                 <li>
                   <Link
                     className="flex hover:bg-primary/20 p-2 rounded gap-1"
-                    onClick={logout}
+                    onClick={handleLogout}
                   >
                     <LogOut className="size-4" /> Logout
                   </Link>
