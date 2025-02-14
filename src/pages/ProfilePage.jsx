@@ -1,6 +1,6 @@
 import React from "react";
 import { useAuthStore } from "../store/useAuthStore";
-import { Camera } from "lucide-react";
+import { Camera, Mail, User } from "lucide-react";
 
 const ProfilePage = () => {
   const { authUser, isUpdatingProfile, updateProfile } = useAuthStore();
@@ -15,7 +15,7 @@ const ProfilePage = () => {
   return (
     <div className="h-screen pt-20">
       <div className="max-w-2l mx-auto p-4 space-y-8">
-        <div className="bg-base-300 rounded-xl p-6 space-y-8">
+        <div className="bg-base-300 rounded-xl p-6 w-4/5 lg:w-3/5 mx-auto space-y-8">
           <div className="text-center">
             <div className="text-2xl font-semibold">Profile</div>
             <p className="mt-2">Your Profile Information</p>
@@ -35,13 +35,47 @@ const ProfilePage = () => {
                 }`}
               >
                 <Camera className="size-5 text-base-200" />
-                <input type="file" id="avatar-upload" className="hidden" accept="image/*" onChange={handleImageUpload} disabled={isUpdatingProfile} />
+                <input
+                  type="file"
+                  id="avatar-upload"
+                  className="hidden"
+                  accept="image/*"
+                  onChange={handleImageUpload}
+                  disabled={isUpdatingProfile}
+                />
               </label>
             </div>
           </div>
-            <p className="text-sm text-center text-zinc-400">
-              {isUpdatingProfile ? "Uploading..." : "Click the camera icon to upload your profile picture"}
-            </p>
+          <p className="text-sm text-center text-zinc-400">
+            {isUpdatingProfile
+              ? "Uploading..."
+              : "Click the camera icon to upload your profile picture"}
+          </p>
+
+          {/* User Info */}
+          <label className="form-control w-full">
+            <div className="label">
+              <span className="label-text flex gap-2 items-center">
+                <User className="size-4" />
+                Full Name
+              </span>
+            </div>
+            <div className="input input-bordered flex items-center gap-2">
+              <input type="text" className="grow" value={authUser.fullName} />
+            </div>
+          </label>
+
+          <label className="form-control w-full">
+            <div className="label">
+              <span className="label-text flex gap-2 items-center">
+                <Mail className="size-4" />
+                Email Address
+              </span>
+            </div>
+            <div className="input input-bordered flex items-center gap-2">
+              <input type="text" className="grow" value={authUser.email} />
+            </div>
+          </label>
         </div>
       </div>
     </div>
