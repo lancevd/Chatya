@@ -11,7 +11,11 @@ const LoginPage = () => {
   const { login, isLoggingIn } = useAuthStore();
 
   const validateForm = () => {};
-  const handleSubmit = (e) => {};
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    login(formData);
+  };
 
   return (
     <div className="min-h-screen grid lg:grid-cols-2">
@@ -24,7 +28,7 @@ const LoginPage = () => {
                 <MessageSquare className="size-6 text-primary" />
               </div>
               <h1 className="text-2xl font-bold mt-2">Welcome Back</h1>
-              <p className="text-base-content/60">Login to your account</p>
+              <p className="text-base-content/60">Log in to your account</p>
             </div>
           </div>
         </div>
@@ -82,7 +86,7 @@ const LoginPage = () => {
                 <Loader2 className="size-4 animate-spin" />
               </>
             ) : (
-              "Create Account"
+              "Login"
             )}
           </button>
         </form>
