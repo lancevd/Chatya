@@ -61,7 +61,7 @@ const ProfilePage = () => {
               </span>
             </div>
             <div className="input input-bordered flex items-center gap-2">
-              <input type="text" className="grow" value={authUser.fullName} />
+              <input type="text" className="grow" value={authUser.fullName} disabled />
             </div>
           </label>
 
@@ -73,9 +73,23 @@ const ProfilePage = () => {
               </span>
             </div>
             <div className="input input-bordered flex items-center gap-2">
-              <input type="text" className="grow" value={authUser.email} />
+              <input type="text" className="grow" value={authUser.email} disabled />
             </div>
           </label>
+          <br />
+          <div className="w-[95%] mx-auto">
+            <p className="font-bold">Account Information</p>
+            <br />
+            <label className="label">
+              <p>Sember Since</p>
+              <p>{authUser.createdAt}</p>
+            </label>
+            <hr />
+            <label className="label">
+              <p>Account Status</p>
+              <p>{authUser.createdAt} Active</p>
+            </label>
+          </div>
         </div>
       </div>
     </div>
