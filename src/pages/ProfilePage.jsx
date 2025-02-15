@@ -1,16 +1,21 @@
-import React from "react";
+import React, { useState } from "react";
 import { useAuthStore } from "../store/useAuthStore";
 import { Camera, Mail, User } from "lucide-react";
 
 const ProfilePage = () => {
   const { authUser, isUpdatingProfile, updateProfile } = useAuthStore();
+  const [selectedImage, setSelectedImage] = useState(null);
 
   const handleImageUpload = async (event) => {
     const file = event.target.files[0];
-    const formData = new FormData();
-    formData.append("image", file);
-
-    await updateProfile(formData);
+    if (!file) return;
+    const reader = new FileReader();
+    reader.readAsDataURL(file);
+    reader.onloadend = async () => {
+      const base64Image = reader.result;
+      setSelectedImage(base64Image);
+      updateProfile({ profilePic: base64Image });
+    };
   };
   return (
     <div className="h-screen pt-20">
@@ -24,7 +29,7 @@ const ProfilePage = () => {
           <div className="flex items-center justify-center">
             <div className="relative">
               <img
-                src={authUser?.profilePic || "/avatar.png"}
+                src={selectedImage || authUser?.profilePic || "/avatar.png"}
                 alt="User Profile"
                 className="size-32 object-cover border-4 rounded-full"
               />
@@ -61,7 +66,12 @@ const ProfilePage = () => {
               </span>
             </div>
             <div className="input input-bordered flex items-center gap-2">
-              <input type="text" className="grow" value={authUser.fullName} disabled />
+              <input
+                type="text"
+                className="grow"
+                value={authUser.fullName}
+                disabled
+              />
             </div>
           </label>
 
@@ -73,7 +83,12 @@ const ProfilePage = () => {
               </span>
             </div>
             <div className="input input-bordered flex items-center gap-2">
-              <input type="text" className="grow" value={authUser.email} disabled />
+              <input
+                type="text"
+                className="grow"
+                value={authUser.email}
+                disabled
+              />
             </div>
           </label>
           <br />
