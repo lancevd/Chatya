@@ -25,13 +25,15 @@ const Navbar = () => {
                 to="/login"
                 className="flex hover:bg-primary/20 p-2 rounded items-center gap-1"
               >
-                <LogIn className="size-4" /> <p className="hidden md:block">Login</p>
+                <LogIn className="size-4" />{" "}
+                <p className="hidden md:block">Login</p>
               </Link>
               <Link
                 to="/settings"
                 className="flex hover:bg-primary/20 p-2 rounded items-center gap-1"
               >
-                <Settings className="size-4" /> <p className="hidden md:block">Settings</p>
+                <Settings className="size-4" />{" "}
+                <p className="hidden md:block">Settings</p>
               </Link>
             </ul>
           </div>
@@ -44,10 +46,7 @@ const Navbar = () => {
                 className="btn btn-ghost btn-circle avatar"
               >
                 <div className="w-10 rounded-full">
-                  <img
-                    alt="User"
-                    src="https://res.cloudinary.com/ddydgzuu7/image/upload/w_1000,c_fill,ar_1:1,g_auto,r_max,bo_5px_solid_white,b_rgb:262c35/v1721993897/samples/smile.jpg"
-                  />
+                  <img alt="User" src={authUser?.profilePic || "/avatar.png"} />
                 </div>
               </div>
               <ul
