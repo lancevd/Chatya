@@ -11,10 +11,10 @@ const ProfilePage = () => {
     if (!file) return;
     const reader = new FileReader();
     reader.readAsDataURL(file);
-    reader.onloadend = async () => {
+    reader.onload = async () => {
       const base64Image = reader.result;
       setSelectedImage(base64Image);
-      updateProfile({ profilePic: base64Image });
+      await updateProfile({ profilePic: base64Image });
     };
   };
   return (
