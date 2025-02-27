@@ -30,7 +30,7 @@ function App() {
   }
 
   return (
-    <div data-theme={theme} className="App">
+    <div data-theme={theme}>
       <Navbar />
 
       <Routes>
