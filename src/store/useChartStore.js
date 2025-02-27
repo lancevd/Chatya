@@ -30,4 +30,7 @@ export const useChartStore = create((set) => ({
         }
         set({ isMessagesLoading: false });
     },
+
+    // todo: optimize this one later
+    setSelectedUser: selectedUser => ({selectedUser})
 }))
