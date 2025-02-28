@@ -97,12 +97,12 @@ const ProfilePage = () => {
             <br />
             <label className="label">
               <p>Sember Since</p>
-              <p>{authUser.createdAt}</p>
+              <p>{authUser.createdAt.split("T")[0]}</p>
             </label>
             <hr />
             <label className="label">
               <p>Account Status</p>
-              <p>{authUser.createdAt} Active</p>
+              <p>Active</p>
             </label>
           </div>
         </div>
