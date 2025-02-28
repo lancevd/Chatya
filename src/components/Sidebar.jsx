@@ -1,16 +1,17 @@
 import React, { useEffect } from 'react'
 import { useChartStore } from '../store/useChartStore';
 import SidebarSkeleton from './skeletons/SidebarSkeleton';
+import { useAuthStore } from '../store/useAuthStore';
 
 const Sidebar = () => {
-    const {users, getUsers, selectedUser, setSelectedUser, isUserLoading} = useChartStore();
-    const onlineUsers = [];
+    const {users, getUsers, selectedUser, setSelectedUser, isUsersLoading} = useChartStore();
+    const {onlineUsers} = useAuthStore();
 
     useEffect(()=> {
         getUsers();
     },[getUsers])
 
-    if (isUserLoading) {
+    if (isUsersLoading) {
         return <SidebarSkeleton />
     }
   return (

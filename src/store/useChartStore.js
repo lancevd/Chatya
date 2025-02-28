@@ -32,5 +32,5 @@ export const useChartStore = create((set) => ({
     },
 
     // todo: optimize this one later
-    setSelectedUser: selectedUser => ({selectedUser})
+    setSelectedUser: selectedUser => set({selectedUser})
 }))
