@@ -12,7 +12,7 @@ const ChatContainer = () => {
     getMessages(selectedUser._id);
   }, [getMessages, selectedUser._id]);
 
-  if (isMessagesLoading) {
+  if (!isMessagesLoading) {
     return (
       <div className="flex flex-1 flex-col overflow-auto">
         <ChatHeader />
