@@ -32,37 +32,18 @@ export const useChartStore = create((set, get) => ({
     }
   },
 
-  // sendMessage: async (messageData) => {
-  //   const { selectedUser, messages } = get();
-  //   console.log(messageData);
-  //   try {
-  //     const response = await axiosInstance.post(
-  //       `/messages/send/${selectedUser._id}`,
-  //       messageData
-  //     );
-  //     set({ messages: [...messages, response.data] });
-  //   } catch (error) {
-  //     toast.error(error.response.data.message);
-  //   }
-  // },
-
   sendMessage: async (messageData) => {
     const { selectedUser, messages } = get();
-
-    // Add this check
-    if (!selectedUser) {
-      toast.error("Please select a contact first");
-      return;
-    }
-
     try {
-      const res = await axiosInstance.post(
+      const response = await axiosInstance.post(
         `/messages/send/${selectedUser._id}`,
         messageData
       );
-      set({ messages: [...messages, res.data] });
+      console.log(messageData)
+      console.log(response.data);
+      set({ messages: [...messages, response.data] });
     } catch (error) {
-      toast.error(error.response?.data?.message || "Failed to send message");
+      toast.error(error.response.data.message);
     }
   },
 
