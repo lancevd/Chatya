@@ -31,14 +31,28 @@ export const useChartStore = create((set, get) => ({
     set({ isMessagesLoading: false });
   },
 
+  // sendMessage: async (messageData) => {
+  //   const { selectedUser, messages } = get();
+  //   console.log(messageData);
+  //   try {
+  //     const response = await axiosInstance.post(
+  //       `/messages/send/${selectedUser._id}`,
+  //       messageData
+  //     );
+  //     set({ messages: [...messages, response.data] });
+  //   } catch (error) {
+  //     toast.error(error.response.data.message);
+  //   }
+  // },
+
   sendMessage: async (messageData) => {
     const { selectedUser, messages } = get();
     try {
-      const response = await axiosInstance.post(
+      const res = await axiosInstance.post(
         `/messages/send/${selectedUser._id}`,
         messageData
       );
-      set({ messages: [...messages, response.data] });
+      set({ messages: [...messages, res.data] });
     } catch (error) {
       toast.error(error.response.data.message);
     }

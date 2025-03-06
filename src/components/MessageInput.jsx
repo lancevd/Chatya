@@ -1,4 +1,4 @@
-import React, { useRef, useState } from "react";
+import { useRef, useState } from "react";
 import { useChartStore } from "../store/useChartStore";
 import { Image, Send, X } from "lucide-react";
 import toast from "react-hot-toast";
@@ -106,5 +106,4 @@ const MessageInput = () => {
     </div>
   );
 };
-
 export default MessageInput;
