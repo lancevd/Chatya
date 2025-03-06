@@ -12,9 +12,11 @@ const ChatContainer = () => {
 
   useEffect(() => {
     getMessages(selectedUser._id);
+    // console.log(messages);
+    // console.log(messages[0]._id);
   }, [getMessages, selectedUser._id]);
 
-  if (!isMessagesLoading) {
+  if (isMessagesLoading) {
     return (
       <div className="flex flex-1 flex-col overflow-auto">
         <ChatHeader />
@@ -22,26 +24,29 @@ const ChatContainer = () => {
       </div>
     );
   }
+
   return (
     <div className="flex flex-1 flex-col overflow-auto">
       <ChatHeader />
       <div className="flex-1 overflow-y-auto p-4 space-y-4">
-        {messages.map((message) => (
+        {/* {messages.map((message) => (
           <div
             key={message._id}
             className={`chat ${
-              message.sender._id === authUser._id ? "chat-end" : "chat-start"
-            } `}
+              message.sender.id === authUser._id ? "chat-end" : "chat-start"
+            }`}
           >
-            <div className="size-10 rounded-full border">
-              <img
-                src={
-                  message.sender._id === authUser._id
-                    ? authUser.profilePic
-                    : selectedUser.profilePic
-                }
-                alt="profile pci"
-              />
+            <div className=" chat-image avatar">
+              <div className="size-10 rounded-full border">
+                <img
+                  src={
+                    message.senderId === authUser._id
+                      ? authUser.profilePic
+                      : selectedUser.profilePic
+                  }
+                  alt="profile pic"
+                />
+              </div>
             </div>
             <div className="chat-header mb-1">
               <time className="text-xs opacity-50 ml-1">
@@ -49,7 +54,7 @@ const ChatContainer = () => {
               </time>
             </div>
           </div>
-        ))}
+        ))} */}
       </div>
       <MessageInput />
     </div>
