@@ -40,7 +40,7 @@ export const useChartStore = create((set, get) => ({
         `/messages/send/${selectedUser._id}`,
         messageData
       );
-      console.log(messageData)
+      console.log(messageData);
       console.log(response.data);
       set({ messages: [...messages, response.data] });
     } catch (error) {
@@ -48,18 +48,21 @@ export const useChartStore = create((set, get) => ({
     }
   },
 
-  subscribeToMessages: ()=>{
+  subscribeToMessages: () => {
     const { selectedUser } = get();
-    if(!selectedUser) return;
+    if (!selectedUser) return;
 
     const socket = useAuthStore.getState().socket;
 
-    socket.on("newMessage", (newMessage) =>{
-      set({messages: [...get().messages, newMessage]})
-    })
+    socket.on("newMessage", (newMessage) => {
+      const isMessageFromSelectedUser =
+        newMessage.senderId === selectedUser._id;
+      if (!isMessageFromSelectedUser) return;
+      set({ messages: [...get().messages, newMessage] });
+    });
   },
 
-  unsubscribeFromMessages: ()=> {
+  unsubscribeFromMessages: () => {
     const socket = useAuthStore.getState().socket;
     socket.off("newMessage");
   },
